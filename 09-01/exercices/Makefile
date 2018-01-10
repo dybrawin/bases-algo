@@ -17,7 +17,7 @@ all: test-scheduler
 $(build_dir)/scheduler.o: $(src_dir)/scheduler.cc $(include_dir)/scheduler.h $(build_dir)/machine.o
 	$(CC) $(CFLAGS) -o $@ -I $(include_dir) $<
 
-$(build_dir)/machine.o: $(src_dir)/machine.cc $(include_dir)/machine.h
+$(build_dir)/machine.o: $(src_dir)/machine.cc $(include_dir)/machine.h $(include_dir)/task.h
 	$(CC) $(CFLAGS) -o $@ -I $(include_dir) $<
 
 test-scheduler: $(build_dir)/machine.o $(build_dir)/scheduler.o $(build_dir)/test-scheduler.o

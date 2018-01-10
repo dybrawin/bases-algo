@@ -2,6 +2,7 @@
 #define MACHINE_H
 
 #include <vector>
+#include <string>
 
 #include "task.h"
 
@@ -16,5 +17,7 @@ class Machine {
 	void addTask (Task task);
 
 	int getTasksSize () const;
+
+	std::string toString () const;
 };
 #endif

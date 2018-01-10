@@ -26,7 +26,8 @@ int Scheduler::schedule (std::vector<Machine> machines, std::vector<Task> tasks)
 		std::cout << "Scheduling the following list of tasks on " <<
 			machines.size() << " machines:" << std::endl;
 		for (const Task& task : tasks)
-			std::cout << "(" << task.id << ", " << task.size << "),";
+			std::cout << "(" << task.id << ", " << task.size << ") ";
+		std::cout << std::endl;
 	}
 	std::cout << std::endl;
 
@@ -43,13 +44,20 @@ int Scheduler::schedule (std::vector<Machine> machines, std::vector<Task> tasks)
 
 	// Get terminal makespan
 	makespan = (machines.front ()).getTasksSize ();
+
+	if (this->verbose)
+		std::cout << "Task repartition after scheduling:" << std::endl;
+
 	for (const Machine& m : machines) {
 		if (makespan < m.getTasksSize ())
 			makespan = m.getTasksSize ();
 		if (this->verbose) {
-			std::cout << "Machine with total task size " << m.getTasksSize () << std::endl;
+			std::cout << m.toString () << std::endl;
 		}
 	}
+
+	if (this->verbose)
+		std::cout << std::endl;
 
 	return makespan;
 }
